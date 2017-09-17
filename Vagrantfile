@@ -66,16 +66,17 @@ echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC0I4zY6dqOKkL+kjCpucO7x9ggip+gTEtTzH
 SCRIPT
 
 
- 
+
   config.vm.define "web01", primary: true do |web01|
 
-    web01.vm.provision "shell", inline: $script2, privileged: true     
-    
+    web01.vm.provision "shell", inline: $script2, privileged: true
+
     web01.vm.box = "ubuntu/trusty64"
     web01.vm.hostname = 'web01'
     web01.vm.box_url = "ubuntu/trusty64"
 
-    web01.vm.network "public_network", :bridge => "en0: Wi-Fi (AirPort)"
+#    web01.vm.network "public_network", :bridge => "en0: Wi-Fi (AirPort)"
+    web01.vm.network "public_network"
     web01.vm.network "private_network", ip: "10.10.10.11"
 
     web01.vm.provider :virtualbox do |v|
@@ -87,13 +88,14 @@ SCRIPT
 
   config.vm.define "web02" do |web02|
 
-    web02.vm.provision "shell", inline: $script2, privileged: true 
+    web02.vm.provision "shell", inline: $script2, privileged: true
 
     web02.vm.box = "ubuntu/trusty64"
     web02.vm.hostname = 'web02'
     web02.vm.box_url = "ubuntu/trusty64"
 
-    web02.vm.network "public_network", :bridge => "en0: Wi-Fi (AirPort)"
+#    web02.vm.network "public_network", :bridge => "en0: Wi-Fi (AirPort)"
+    web02.vm.network "public_network"
     web02.vm.network "private_network", ip: "10.10.10.12"
 
     web02.vm.provider :virtualbox do |v|
@@ -105,13 +107,14 @@ SCRIPT
 
   config.vm.define "web03" do |web03|
 
-    web03.vm.provision "shell", inline: $script2, privileged: true    
+    web03.vm.provision "shell", inline: $script2, privileged: true
 
     web03.vm.box = "ubuntu/trusty64"
     web03.vm.hostname = 'web03'
     web03.vm.box_url = "ubuntu/trusty64"
 
-    web03.vm.network "public_network", :bridge => "en0: Wi-Fi (AirPort)"
+#    web03.vm.network "public_network", :bridge => "en0: Wi-Fi (AirPort)"
+    web03.vm.network "public_network"
     web03.vm.network "private_network", ip: "10.10.10.13"
 
     web03.vm.provider :virtualbox do |v|
@@ -127,11 +130,14 @@ SCRIPT
 
     ansimaster.vm.provision "shell", inline: $script, privileged: true
 
+    ansimaster.vm.synced_folder "ansible/", "/home/vagrant/ansible"
+
     ansimaster.vm.box = "ubuntu/trusty64"
     ansimaster.vm.hostname = 'ansimaster'
     ansimaster.vm.box_url = "ubuntu/trusty64"
 
-    ansimaster.vm.network "public_network", :bridge => "en0: Wi-Fi (AirPort)"
+#    ansimaster.vm.network "public_network", :bridge => "en0: Wi-Fi (AirPort)"
+    ansimaster.vm.network "public_network"
     ansimaster.vm.network "private_network", ip: "10.10.10.10"
 
     ansimaster.vm.provider :virtualbox do |v|
