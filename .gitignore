@@ -1,0 +1,8 @@
+.vagrant/
+DONOTCOMMIT/
+*.retry
+*.log
+.DS_Store
+out/
+overview.html
+Scripts/
