@@ -45,3 +45,17 @@ Required:
 - Make sure that vagrant is installed and working on it
 
 - (have the image of ubuntu/trusty64 already downloaded)
+
+----------
+USAGE
+---
+
+Login to `ansimaster` via
+```vagrant ssh ansimaster```
+
+As user `vagrant` you can run any playbook from the following directory:
+```/home/vagrant/ansible```
+like so:
+```ansible-playbook -i inventory/hosts playbooks/testThings.yml```
+
+The key of ansimaster exists already on the three web nodes
