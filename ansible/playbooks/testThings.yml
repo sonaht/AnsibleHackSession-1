@@ -1,0 +1,12 @@
+---
+- hosts: "{{ hostName | default('all') }}"
+  become: true
+  gather_facts: False
+  
+#  vars:
+#     - MyTest: "yes this works - from the playbook vars"
+
+  roles:
+    - { role: testThings } 
+#    - { role: testThings, MyTest: 'yes this works - from conditional role', when: inventory_hostname == 'web02.ultraweb4u.com' }
+#    - { role: testThings, when: inventory_hostname != 'web02.ultraweb4u.com' }

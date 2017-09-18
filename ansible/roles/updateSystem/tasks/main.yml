@@ -1,0 +1,16 @@
+---
+- name: update cache
+  apt:
+    update_cache: yes
+    cache_valid_time: 86400 #One day
+
+- name: upgrade cache
+  apt:
+    upgrade: yes   
+  when: ( doUpgrade|bool == true)
+
+- name: Print debug msg 
+  debug:
+    msg: "doUpgrade => {{ doUpgrade }}"
+
+

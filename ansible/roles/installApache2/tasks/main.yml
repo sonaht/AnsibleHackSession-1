@@ -1,0 +1,6 @@
+---
+- name: Ensure Apache2 is installed on Debian.
+  apt: 
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ apache_packages }}"

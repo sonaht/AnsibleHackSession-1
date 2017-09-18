@@ -1,0 +1,9 @@
+---
+# tasks file for testThings
+
+# quick playbook to get hostnames of all nodes affected
+- name: get hostname for test conenctivity
+  command: cat /etc/hostname
+  register: result
+
+- debug: msg="The hostname is -> {{ result.stdout }} - coming from = {{MyTest}}"

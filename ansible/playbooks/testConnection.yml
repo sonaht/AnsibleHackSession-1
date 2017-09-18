@@ -1,0 +1,23 @@
+---
+- name: test
+  hosts: "{{ hostName | default('all') }}"
+  gather_facts: false
+  become: true
+
+  tasks:
+  - name: run ping on all or selected
+    ping:
+    tags:
+       - ping
+
+  - name: type hello on all or selected
+    shell: "echo hello"
+    tags:
+       - hello
+    register: MyOutput
+
+  - name: Print debug msg
+    debug:
+       msg: "We echoed on shell => {{ MyOutput.stdout }}"
+
+

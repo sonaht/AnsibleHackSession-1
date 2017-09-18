@@ -1,0 +1,9 @@
+
+---
+- hosts: "{{ hostName | default('all') }}"
+  become: true
+  gather_facts: False
+
+  roles:
+    - { role: updateSystem, doUpgrade: false }
+
